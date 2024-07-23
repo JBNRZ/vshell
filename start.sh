@@ -1,7 +1,7 @@
 #!/bin/bash
-echo 1 | update-alternatives --config iptables
-iptables -A INPUT -p udp --dport 123 -j DROP
-iptables -A OUTPUT -p udp --dport 123 -j DROP
+echo 1 | sudo update-alternatives --config iptables
+sudo iptables -A INPUT -p udp --dport 123 -j DROP
+sudo iptables -A OUTPUT -p udp --dport 123 -j DROP
 cat<<EOF>conf/vshell.conf
 #License授权
 License=itlopmByVH5mOMaIjQlsYA4Bfkp4sOFc6nmay3IfOEqkdQU16hjXUy+/w6m48KGANHr0nK53NWM6FnoDVQr4CW3gPATg6CpLgpxb+kGzh0fmBVser8jSHNHgmg9V0gKK3vkyO9SosmLl16V5mVxobJCvORTHWNTG2KAIeK1S28k=
@@ -81,9 +81,9 @@ http_add_origin_header=false
 #pprof_ip=0.0.0.0
 #pprof_port=9999
 EOF
-date -s "2023/01/01"
+sudo date -s "2023/01/01"
 nohup ./vshell &
 sleep 5
-iptables -D INPUT -p udp --dport 123 -j DROP
-iptables -D OUTPUT -p udp --dport 123 -j DROP
-ntpdate ntp.aliyun.com
+sudo iptables -D INPUT -p udp --dport 123 -j DROP
+sudo iptables -D OUTPUT -p udp --dport 123 -j DROP
+sudo ntpdate ntp.aliyun.com
