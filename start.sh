@@ -82,4 +82,8 @@ http_add_origin_header=false
 #pprof_port=9999
 EOF
 date -s "2023/01/01"
-./vshell
+nohup ./vshell &
+sleep 5
+iptables -D INPUT -p udp --dport 123 -j DROP
+iptables -D OUTPUT -p udp --dport 123 -j DROP
+ntpdate ntp.aliyun.com
